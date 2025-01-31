@@ -1,0 +1,821 @@
+[
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1](=[O:2])([cH:3]:[NH:4])[N:6][CH3:5]>>O[C:1](=[O:2])[cH:3]:[NH:4].[CH3:5][N:6]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "e83ee81602b397ed833d633e817ffa090f0d21c621887dacaf746f5e",
+          "classification": "N-acylation to amide",
+          "library_occurence": 1402,
+          "policy_probability": 0.00800000037997961,
+          "policy_probability_rank": 1,
+          "policy_name": "full_uspto",
+          "template_code": 42415,
+          "template": "([#7;a:4]:[c:3]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[NH;D2;+0:6]-[C:5])>>(O-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]:[#7;a:4]).([C:5]-[NH2;D1;+0:6])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[OH:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH2:10])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(OCCN)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)O)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1](=[O:2])([cH:3]:[NH:4])[N:6][CH3:5]>>CO[C:1](=[O:2])[cH:3]:[NH:4].[CH3:5][N:6]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "84208f8b03c6c451f59da739eedad075bd59ef6931680c2171c4dad0",
+          "classification": "N-acylation to amide",
+          "library_occurence": 305,
+          "policy_probability": 0.0010000000474974513,
+          "policy_probability_rank": 4,
+          "policy_name": "full_uspto",
+          "template_code": 24204,
+          "template": "([#7;a:4]:[c:3]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[NH;D2;+0:6]-[C:5])>>(C-O-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]:[#7;a:4]).([C:5]-[NH2;D1;+0:6])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[O:26][CH3:27].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH2:10])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(OCCN)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COC(=O)c1c(C)nc2cc(C)ccn12",
+            "is_chemical": true,
+            "in_stock": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1](=[O:2])([cH3:3])[N:5][CH3:4]>>Cl[C:1](=[O:2])[cH3:3].[CH3:4][N:5]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "04f622b60f06614bfdc3f8c27947d26b216da996402159ccfe3a0fc7",
+          "classification": "N-acylation to amide",
+          "library_occurence": 1197,
+          "policy_probability": 0.0008999999845400453,
+          "policy_probability_rank": 5,
+          "policy_name": "full_uspto",
+          "template_code": 941,
+          "template": "([C:4]-[NH;D2;+0:5]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3])>>(Cl-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]).([C:4]-[NH2;D1;+0:5])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Cl:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH2:10])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(OCCN)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)Cl)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1]([CH3:2])[O:3][cH3:4]>>Br[C:1][CH3:2].[O:3][cH3:4]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "77cefa6f7285e1367b00e291ad0c233a215688d867a7713380b3385d",
+          "classification": "O-substitution",
+          "library_occurence": 3910,
+          "policy_probability": 0.0007999999797903001,
+          "policy_probability_rank": 8,
+          "policy_name": "full_uspto",
+          "template_code": 21999,
+          "template": "([C:2]-[CH2;D2;+0:1]-[O;H0;D2;+0:3]-[c:4])>>(Br-[CH2;D2;+0:1]-[C:2]).([OH;D1;+0:3]-[c:4])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Br:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([OH:7])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(O)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)NCCBr)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": false,
+            "children": [
+              {
+                "type": "reaction",
+                "hide": false,
+                "smiles": "[C:1](=[O:2])([cH:3]:[NH:4])[N:6][CH3:5]>>O[C:1](=[O:2])[cH:3]:[NH:4].[CH3:5][N:6]",
+                "is_reaction": true,
+                "metadata": {
+                  "template_hash": "e83ee81602b397ed833d633e817ffa090f0d21c621887dacaf746f5e",
+                  "classification": "N-acylation to amide",
+                  "library_occurence": 1402,
+                  "policy_probability": 0.03660000115633011,
+                  "policy_probability_rank": 1,
+                  "policy_name": "full_uspto",
+                  "template_code": 42415,
+                  "template": "([#7;a:4]:[c:3]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[NH;D2;+0:6]-[C:5])>>(O-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]:[#7;a:4]).([C:5]-[NH2;D1;+0:6])",
+                  "mapped_reaction_smiles": "[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Br:26]>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[OH:24].[CH2:8]([CH2:9][NH2:10])[Br:26]"
+                },
+                "children": [
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "NCCBr",
+                    "is_chemical": true,
+                    "in_stock": true
+                  },
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "Cc1ccn2c(C(=O)O)c(C)nc2c1",
+                    "is_chemical": true,
+                    "in_stock": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1]([CH3:2])[O:3][cH3:4]>>Br[C:1][CH3:2].[O:3][cH3:4]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "77cefa6f7285e1367b00e291ad0c233a215688d867a7713380b3385d",
+          "classification": "O-substitution",
+          "library_occurence": 3910,
+          "policy_probability": 0.0007999999797903001,
+          "policy_probability_rank": 8,
+          "policy_name": "full_uspto",
+          "template_code": 21999,
+          "template": "([C:2]-[CH2;D2;+0:1]-[O;H0;D2;+0:3]-[c:4])>>(Br-[CH2;D2;+0:1]-[C:2]).([OH;D1;+0:3]-[c:4])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Br:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([OH:7])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(O)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)NCCBr)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": false,
+            "children": [
+              {
+                "type": "reaction",
+                "hide": false,
+                "smiles": "[C:1](=[O:2])([cH3:3])[N:5][CH3:4]>>Cl[C:1](=[O:2])[cH3:3].[CH3:4][N:5]",
+                "is_reaction": true,
+                "metadata": {
+                  "template_hash": "04f622b60f06614bfdc3f8c27947d26b216da996402159ccfe3a0fc7",
+                  "classification": "N-acylation to amide",
+                  "library_occurence": 1197,
+                  "policy_probability": 0.006300000008195639,
+                  "policy_probability_rank": 8,
+                  "policy_name": "full_uspto",
+                  "template_code": 941,
+                  "template": "([C:4]-[NH;D2;+0:5]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3])>>(Cl-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]).([C:4]-[NH2;D1;+0:5])",
+                  "mapped_reaction_smiles": "[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Br:26]>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Cl:24].[CH2:8]([CH2:9][NH2:10])[Br:26]"
+                },
+                "children": [
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "NCCBr",
+                    "is_chemical": true,
+                    "in_stock": true
+                  },
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "Cc1ccn2c(C(=O)Cl)c(C)nc2c1",
+                    "is_chemical": true,
+                    "in_stock": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1]([CH3:2])[O:3][cH3:4]>>Br[C:1][CH3:2].[O:3][cH3:4]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "77cefa6f7285e1367b00e291ad0c233a215688d867a7713380b3385d",
+          "classification": "O-substitution",
+          "library_occurence": 3910,
+          "policy_probability": 0.0007999999797903001,
+          "policy_probability_rank": 8,
+          "policy_name": "full_uspto",
+          "template_code": 21999,
+          "template": "([C:2]-[CH2;D2;+0:1]-[O;H0;D2;+0:3]-[c:4])>>(Br-[CH2;D2;+0:1]-[C:2]).([OH;D1;+0:3]-[c:4])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Br:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([OH:7])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(O)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)NCCBr)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": false,
+            "children": [
+              {
+                "type": "reaction",
+                "hide": false,
+                "smiles": "[C:1](=[O:2])([cH:3]:[NH:4])[N:6][CH3:5]>>CO[C:1](=[O:2])[cH:3]:[NH:4].[CH3:5][N:6]",
+                "is_reaction": true,
+                "metadata": {
+                  "template_hash": "84208f8b03c6c451f59da739eedad075bd59ef6931680c2171c4dad0",
+                  "classification": "N-acylation to amide",
+                  "library_occurence": 305,
+                  "policy_probability": 0.005499999970197678,
+                  "policy_probability_rank": 10,
+                  "policy_name": "full_uspto",
+                  "template_code": 24204,
+                  "template": "([#7;a:4]:[c:3]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[NH;D2;+0:6]-[C:5])>>(C-O-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]:[#7;a:4]).([C:5]-[NH2;D1;+0:6])",
+                  "mapped_reaction_smiles": "[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Br:26]>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[O:24][CH3:25].[CH2:8]([CH2:9][NH2:10])[Br:26]"
+                },
+                "children": [
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "NCCBr",
+                    "is_chemical": true,
+                    "in_stock": true
+                  },
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "COC(=O)c1c(C)nc2cc(C)ccn12",
+                    "is_chemical": true,
+                    "in_stock": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1]([CH3:2])[O:3][cH3:4]>>O[C:1][CH3:2].[O:3][cH3:4]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "6b5437625f42979eb76da5582165cd62b5dfeb41d76ac0fbed0bf4a3",
+          "classification": "O-substitution",
+          "library_occurence": 2138,
+          "policy_probability": 0.00039999998989515007,
+          "policy_probability_rank": 12,
+          "policy_name": "full_uspto",
+          "template_code": 19736,
+          "template": "([C:2]-[CH2;D2;+0:1]-[O;H0;D2;+0:3]-[c:4])>>(O-[CH2;D2;+0:1]-[C:2]).([OH;D1;+0:3]-[c:4])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[OH:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([OH:7])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(O)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)NCCO)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": false,
+            "children": [
+              {
+                "type": "reaction",
+                "hide": false,
+                "smiles": "[C:1](=[O:2])([cH:3]:[NH:4])[N:6][CH3:5]>>O[C:1](=[O:2])[cH:3]:[NH:4].[CH3:5][N:6]",
+                "is_reaction": true,
+                "metadata": {
+                  "template_hash": "e83ee81602b397ed833d633e817ffa090f0d21c621887dacaf746f5e",
+                  "classification": "N-acylation to amide",
+                  "library_occurence": 1402,
+                  "policy_probability": 0.019600000232458115,
+                  "policy_probability_rank": 1,
+                  "policy_name": "full_uspto",
+                  "template_code": 42415,
+                  "template": "([#7;a:4]:[c:3]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[NH;D2;+0:6]-[C:5])>>(O-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]:[#7;a:4]).([C:5]-[NH2;D1;+0:6])",
+                  "mapped_reaction_smiles": "[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[OH:26]>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[OH:24].[CH2:8]([CH2:9][NH2:10])[OH:26]"
+                },
+                "children": [
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "NCCO",
+                    "is_chemical": true,
+                    "in_stock": true
+                  },
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "Cc1ccn2c(C(=O)O)c(C)nc2c1",
+                    "is_chemical": true,
+                    "in_stock": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1]([CH3:2])[O:3][cH3:4]>>O[C:1][CH3:2].[O:3][cH3:4]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "6b5437625f42979eb76da5582165cd62b5dfeb41d76ac0fbed0bf4a3",
+          "classification": "O-substitution",
+          "library_occurence": 2138,
+          "policy_probability": 0.00039999998989515007,
+          "policy_probability_rank": 12,
+          "policy_name": "full_uspto",
+          "template_code": 19736,
+          "template": "([C:2]-[CH2;D2;+0:1]-[O;H0;D2;+0:3]-[c:4])>>(O-[CH2;D2;+0:1]-[C:2]).([OH;D1;+0:3]-[c:4])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[OH:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([OH:7])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(O)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)NCCO)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": false,
+            "children": [
+              {
+                "type": "reaction",
+                "hide": false,
+                "smiles": "[C:1](=[O:2])([cH:3]:[NH:4])[N:6][CH3:5]>>CO[C:1](=[O:2])[cH:3]:[NH:4].[CH3:5][N:6]",
+                "is_reaction": true,
+                "metadata": {
+                  "template_hash": "84208f8b03c6c451f59da739eedad075bd59ef6931680c2171c4dad0",
+                  "classification": "N-acylation to amide",
+                  "library_occurence": 305,
+                  "policy_probability": 0.006099999882280827,
+                  "policy_probability_rank": 5,
+                  "policy_name": "full_uspto",
+                  "template_code": 24204,
+                  "template": "([#7;a:4]:[c:3]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[NH;D2;+0:6]-[C:5])>>(C-O-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]:[#7;a:4]).([C:5]-[NH2;D1;+0:6])",
+                  "mapped_reaction_smiles": "[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[OH:26]>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[O:24][CH3:25].[CH2:8]([CH2:9][NH2:10])[OH:26]"
+                },
+                "children": [
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "NCCO",
+                    "is_chemical": true,
+                    "in_stock": true
+                  },
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "COC(=O)c1c(C)nc2cc(C)ccn12",
+                    "is_chemical": true,
+                    "in_stock": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1]([CH3:2])[O:3][cH3:4]>>O[C:1][CH3:2].[O:3][cH3:4]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "6b5437625f42979eb76da5582165cd62b5dfeb41d76ac0fbed0bf4a3",
+          "classification": "O-substitution",
+          "library_occurence": 2138,
+          "policy_probability": 0.00039999998989515007,
+          "policy_probability_rank": 12,
+          "policy_name": "full_uspto",
+          "template_code": 19736,
+          "template": "([C:2]-[CH2;D2;+0:1]-[O;H0;D2;+0:3]-[c:4])>>(O-[CH2;D2;+0:1]-[C:2]).([OH;D1;+0:3]-[c:4])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[OH:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([OH:7])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(O)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)NCCO)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": false,
+            "children": [
+              {
+                "type": "reaction",
+                "hide": false,
+                "smiles": "[C:1](=[O:2])([cH3:3])[N:5][CH3:4]>>Cl[C:1](=[O:2])[cH3:3].[CH3:4][N:5]",
+                "is_reaction": true,
+                "metadata": {
+                  "template_hash": "04f622b60f06614bfdc3f8c27947d26b216da996402159ccfe3a0fc7",
+                  "classification": "N-acylation to amide",
+                  "library_occurence": 1197,
+                  "policy_probability": 0.0027000000700354576,
+                  "policy_probability_rank": 11,
+                  "policy_name": "full_uspto",
+                  "template_code": 941,
+                  "template": "([C:4]-[NH;D2;+0:5]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3])>>(Cl-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]).([C:4]-[NH2;D1;+0:5])",
+                  "mapped_reaction_smiles": "[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[OH:26]>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Cl:24].[CH2:8]([CH2:9][NH2:10])[OH:26]"
+                },
+                "children": [
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "NCCO",
+                    "is_chemical": true,
+                    "in_stock": true
+                  },
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "Cc1ccn2c(C(=O)Cl)c(C)nc2c1",
+                    "is_chemical": true,
+                    "in_stock": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1]([CH3:2])[O:3][cH3:4]>>Cl[C:1][CH3:2].[O:3][cH3:4]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "527560bc9018fea283f8e56075bc56b30679ebc551e8680bcfc16c9a",
+          "classification": "O-substitution",
+          "library_occurence": 1512,
+          "policy_probability": 9.999999747378752e-05,
+          "policy_probability_rank": 27,
+          "policy_name": "full_uspto",
+          "template_code": 15092,
+          "template": "([C:2]-[CH2;D2;+0:1]-[O;H0;D2;+0:3]-[c:4])>>(Cl-[CH2;D2;+0:1]-[C:2]).([OH;D1;+0:3]-[c:4])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Cl:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([OH:7])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(O)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)NCCCl)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": false,
+            "children": [
+              {
+                "type": "reaction",
+                "hide": false,
+                "smiles": "[C:1](=[O:2])([cH:3][cH:4]:[NH:5])[N:7][CH3:6]>>O[C:1](=[O:2])[cH:3][cH:4]:[NH:5].[CH3:6][N:7]",
+                "is_reaction": true,
+                "metadata": {
+                  "template_hash": "c8d3e8be644ca37fe3075935d6d9f9515443e1dc5a5fca512a1988ac",
+                  "classification": "N-acylation to amide",
+                  "library_occurence": 1860,
+                  "policy_probability": 0.01510000042617321,
+                  "policy_probability_rank": 3,
+                  "policy_name": "full_uspto",
+                  "template_code": 36742,
+                  "template": "([#7;a:5]:[c:4]:[c:3]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[NH;D2;+0:7]-[C:6])>>(O-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]:[c:4]:[#7;a:5]).([C:6]-[NH2;D1;+0:7])",
+                  "mapped_reaction_smiles": "[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Cl:26]>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[OH:24].[CH2:8]([CH2:9][NH2:10])[Cl:26]"
+                },
+                "children": [
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "NCCCl",
+                    "is_chemical": true,
+                    "in_stock": true
+                  },
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "Cc1ccn2c(C(=O)O)c(C)nc2c1",
+                    "is_chemical": true,
+                    "in_stock": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1]([CH3:2])[O:3][cH3:4]>>Cl[C:1][CH3:2].[O:3][cH3:4]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "527560bc9018fea283f8e56075bc56b30679ebc551e8680bcfc16c9a",
+          "classification": "O-substitution",
+          "library_occurence": 1512,
+          "policy_probability": 9.999999747378752e-05,
+          "policy_probability_rank": 27,
+          "policy_name": "full_uspto",
+          "template_code": 15092,
+          "template": "([C:2]-[CH2;D2;+0:1]-[O;H0;D2;+0:3]-[c:4])>>(Cl-[CH2;D2;+0:1]-[C:2]).([OH;D1;+0:3]-[c:4])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Cl:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([OH:7])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(O)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)NCCCl)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": false,
+            "children": [
+              {
+                "type": "reaction",
+                "hide": false,
+                "smiles": "[C:1](=[O:2])([cH3:3])[N:5][CH3:4]>>Cl[C:1](=[O:2])[cH3:3].[CH3:4][N:5]",
+                "is_reaction": true,
+                "metadata": {
+                  "template_hash": "04f622b60f06614bfdc3f8c27947d26b216da996402159ccfe3a0fc7",
+                  "classification": "N-acylation to amide",
+                  "library_occurence": 1197,
+                  "policy_probability": 0.006899999920278788,
+                  "policy_probability_rank": 8,
+                  "policy_name": "full_uspto",
+                  "template_code": 941,
+                  "template": "([C:4]-[NH;D2;+0:5]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3])>>(Cl-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]).([C:4]-[NH2;D1;+0:5])",
+                  "mapped_reaction_smiles": "[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Cl:26]>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Cl:24].[CH2:8]([CH2:9][NH2:10])[Cl:26]"
+                },
+                "children": [
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "NCCCl",
+                    "is_chemical": true,
+                    "in_stock": true
+                  },
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "Cc1ccn2c(C(=O)Cl)c(C)nc2c1",
+                    "is_chemical": true,
+                    "in_stock": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "mol",
+    "hide": false,
+    "smiles": "COc1ccc(OCCNC(=O)c2c(C)nc3cc(C)ccn23)cc1",
+    "is_chemical": true,
+    "in_stock": false,
+    "children": [
+      {
+        "type": "reaction",
+        "hide": false,
+        "smiles": "[C:1]([CH3:2])[O:3][cH3:4]>>Cl[C:1][CH3:2].[O:3][cH3:4]",
+        "is_reaction": true,
+        "metadata": {
+          "template_hash": "527560bc9018fea283f8e56075bc56b30679ebc551e8680bcfc16c9a",
+          "classification": "O-substitution",
+          "library_occurence": 1512,
+          "policy_probability": 9.999999747378752e-05,
+          "policy_probability_rank": 27,
+          "policy_name": "full_uspto",
+          "template_code": 15092,
+          "template": "([C:2]-[CH2;D2;+0:1]-[O;H0;D2;+0:3]-[c:4])>>(Cl-[CH2;D2;+0:1]-[C:2]).([OH;D1;+0:3]-[c:4])",
+          "mapped_reaction_smiles": "[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([O:7][CH2:8][CH2:9][NH:10][C:11](=[O:12])[c:13]2[c:14]([CH3:15])[n:16][c:17]3[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]23)[cH:24][cH:25]1>>[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Cl:26].[CH3:1][O:2][c:3]1[cH:4][cH:5][c:6]([OH:7])[cH:24][cH:25]1"
+        },
+        "children": [
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "COc1ccc(O)cc1",
+            "is_chemical": true,
+            "in_stock": true
+          },
+          {
+            "type": "mol",
+            "hide": false,
+            "smiles": "Cc1ccn2c(C(=O)NCCCl)c(C)nc2c1",
+            "is_chemical": true,
+            "in_stock": false,
+            "children": [
+              {
+                "type": "reaction",
+                "hide": false,
+                "smiles": "[C:1](=[O:2])([cH:3]:[NH:4])[N:6][CH3:5]>>CO[C:1](=[O:2])[cH:3]:[NH:4].[CH3:5][N:6]",
+                "is_reaction": true,
+                "metadata": {
+                  "template_hash": "84208f8b03c6c451f59da739eedad075bd59ef6931680c2171c4dad0",
+                  "classification": "N-acylation to amide",
+                  "library_occurence": 305,
+                  "policy_probability": 0.00279999990016222,
+                  "policy_probability_rank": 11,
+                  "policy_name": "full_uspto",
+                  "template_code": 24204,
+                  "template": "([#7;a:4]:[c:3]-[C;H0;D3;+0:1](=[O;D1;H0:2])-[NH;D2;+0:6]-[C:5])>>(C-O-[C;H0;D3;+0:1](=[O;D1;H0:2])-[c:3]:[#7;a:4]).([C:5]-[NH2;D1;+0:6])",
+                  "mapped_reaction_smiles": "[CH2:8]([CH2:9][NH:10][C:11](=[O:12])[c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[Cl:26]>>[C:11](=[O:12])([c:13]1[c:14]([CH3:15])[n:16][c:17]2[cH:18][c:19]([CH3:20])[cH:21][cH:22][n:23]12)[O:24][CH3:25].[CH2:8]([CH2:9][NH2:10])[Cl:26]"
+                },
+                "children": [
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "NCCCl",
+                    "is_chemical": true,
+                    "in_stock": true
+                  },
+                  {
+                    "type": "mol",
+                    "hide": false,
+                    "smiles": "COC(=O)c1c(C)nc2cc(C)ccn12",
+                    "is_chemical": true,
+                    "in_stock": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
