@@ -1,0 +1,1387 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Smiles Drawer Example</title>
+    <meta name="description" content="A minimal smiles drawer example." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" />
+</head>
+<style>
+    #box {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
+
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 10;
+        overflow: hidden;
+    }
+
+    .it {
+        font-size: 25;
+    }
+
+    .iterationinput {
+        width: 60;
+        font-size: larger;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        width: 200;
+        height: 15px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #007bff;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #007bff;
+        cursor: pointer;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+
+    }
+
+    th,
+    td {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    td {
+        word-wrap: break-word
+    }
+
+    .justifydiv {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-right: 7px;
+    }
+
+    .my-container {
+        width: 100%;
+        height: auto;
+        background: white;
+        padding: 1px
+    }
+
+    .my-element {
+        background: #fff;
+        aspect-ratio: 1 / 1;
+        width: 100%;
+    }
+</style>
+
+
+<body>
+    <form id="myform">
+
+        <div class="slidecontainer">
+            <span class="it">Iterations</span>
+            <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
+            <input type="number" id="demo" name="fname" value="" class="iterationinput" min="1" max="100">
+            <span style="margin-left: 20    ;"> </span>
+            <!-- <span class="it" >Zoom</span>
+
+        <input type="range" min="0.1" max="1.8" value="0.1" step="0.01" class="slider" id="zoomRange" style="margin-right: 20    ;"> -->
+            <input type="button" onclick="window.location.href='/retrosynthesis_save_tree'"
+                class="btn btn-outline-primary m-1" value="Save" style="float: right;">
+            <span class="it">Best Route Node</span>
+            <input type="color" value="#0000ff" id="bestnodepicker" style="margin-right: 20px;">
+
+            <span class="it">Solved Route Node</span>
+            <input type="color" value="#00ff00" id="solvedroutenodepicker" style="margin-right: 20px;">
+
+            <span class="it">Solved Node</span>
+            <input type="color" value="#00ffff" id="solvednodepicker" style="margin-right: 20px;">
+
+            <span class="it">Unsolved Node</span>
+            <input type="color" value="#000000" id="unsolvednodepicker" style="margin-right: 20px;">
+
+            <span class="it">Selected Node</span>
+            <input type="color" value="#ff0000" id="selectedpicker" style="margin-right: 20px;">
+            
+            <span class="it">Expanded Tree</span>
+            <input type="checkbox" id="fullexpand" name="checkbox" onclick="togglexpand()" value="0">
+        </div>
+    </form>
+    <canvas id="myCanvas" style="border:3px solid black;flex-grow : 1; position:fixed;"></canvas>
+
+    <div id="box">
+        <div class="justifydiv" style="padding-left: 3px;">
+            <div id="compundDiv" style=" margin-top: 2px;margin-right: 10px; background-color: white; width: 20%;  visibility: hidden; z-index: 999;">
+                <h3 style="margin: 10;">Compounds</h3>
+
+                <select style="width: 100%; font-size: 25px; padding-left: 10px;padding-top: 5px;padding-bottom: 5px;"
+                    id="compoundselect">
+
+                </select>
+                <div class="my-container">
+                    <div class="my-element"> <canvas id="compoundcanvas" width="500" height="500"
+                            style="width: 100%; height: 100%;"></canvas></div>
+                </div>
+
+
+                <span id="compoundsg" style="margin: 10;"></span>
+
+                <table id="CompoundTable">
+                    <col style="width:40%">
+                    <col style="width:60%">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Compound</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Name</td>
+                            <td id="CompoundName"></td>
+
+                        </tr>
+                        <tr>
+                            <td>Molecular Weight</td>
+                            <td id="CompoundMolecularWeight">0</td>
+
+                        </tr>
+                        <tr>
+                            <td>CAS</td>
+                            <td id="CompoundCAS">None</td>
+                        </tr>
+                        <tr>
+                            <td>Hazard Codes</td>
+                            <td id="CompoundHazardCodes"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div id="conditiondiv"
+                style=" margin-top: 2px;margin-right: 5px; background-color: white; width: 30%; height: fit-content;  visibility: hidden; z-index: 999;">
+                <select style="width: 100%; font-size: 25px; padding-left: 10px;padding-top: 5px;padding-bottom: 5px;"
+                    id="conditionselect">
+
+                </select>
+                <table id="SustainabliltyTable">
+                    <col style="width:40%">
+                    <col style="width:60%">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Conditions & Sustainablilty</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Likehood Score</td>
+                            <td id="Likehood">0</td>
+
+                        </tr>
+                        <tr>
+                            <td>Temperature (°C)</td>
+                            <td id="temperature">0</td>
+
+                        </tr>
+                        <tr>
+                            <td>Solvent</td>
+                            <td id="solvent">None</td>
+                        </tr>
+                        <tr>
+                            <td>Reagents</td>
+                            <td id="reagents">None</td>
+                        </tr>
+                        <tr>
+                            <td>Catalyst</td>
+                            <td id="catalyst">None</td>
+                        </tr>
+                        <tr>
+                            <td>Element Sustainablilty</td>
+                            <td id="element_sustainability">0</td>
+                        </tr>
+                        <tr>
+                            <td>Atom Economy</td>
+                            <td id="atom_economy">0%</td>
+                        </tr>
+                        <tr>
+                            <td>Saftey</td>
+                            <td id="safety">None</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="stepAnalysisTable" style="margin-top: 50px;">
+
+                    <thead>
+                        <tr id="stepAnalysisTablehead">
+                            <th>Step Analysis</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="solventrow">
+                            <td>Solvent</td>
+                        </tr>
+                        <tr id="temperaturerow">
+                            <td>Temperature</td>
+                        </tr>
+                        <tr id="catalystrow">
+                            <td>Catalyst</td>
+                        </tr>
+                        <tr id="element_sustainabilityrow">
+                            <td>Element Sustainability</td>
+                        </tr>
+                        <tr id="atom_economyrow">
+                            <td>Atom Economy</td>
+                        </tr>
+                        <tr id="safetyrow">
+                            <td>Safety</td>
+                        </tr>
+                        <tr id="Weighted_medianrow">
+                            <td>Weighted Median</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <canvas id="hcanvas" width="500" height="500"></canvas>
+
+    <!-- <script src="https://unpkg.com/smiles-drawer@1.0.10/dist/smiles-drawer.min.js"></script> -->
+    <script src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"></script>
+
+
+
+    <script>
+        BESTNODECOLOR = "#0000ff";
+        SOLVEDROUTENODECOLOR = "#00ff00";
+        SOLVEDNODECOLOR = "#00ffff";
+        UNSOLVEDNODECOLOR = "#000000";
+        SELECTEDNODECOLOR = "#ff0000";
+
+        let HASH = 0
+
+
+        blankcondition = {
+            "solvent": {
+                "solvent": [
+                    "Unknow"
+                ],
+                "flag": 0
+            },
+            "temperature": {
+                "temperature": "Unknow",
+                "flag": 0
+            },
+            "catalyst": {
+                "catalyst": "Unknow",
+                "flag": 0
+            },
+            "element_sustainability": {
+                "years": "Unknow",
+                "flag": 0
+            },
+            "atom_economy": {
+                "atom_economy": "Unknow",
+                "flag": 0
+            },
+            "safety": {
+                "hazard_code_list": [
+                    "Unknow"
+                ],
+                "flag": 0
+            },
+            "unweighted_median": {
+                "flag": 0
+            }
+        }
+        blanksus = {
+            "score": "Unknow"
+        }
+        var slider = document.getElementById("myRange");
+
+        var output = document.getElementById("demo");
+        var conditonselect = document.getElementById("conditionselect");
+        var compoundselect = document.getElementById("compoundselect");
+        compoundcanvas
+        var compoundcanvas = document.getElementById("compoundcanvas");
+        var fullexpandcombo = document.getElementById("fullexpand");
+        fullexpand=false
+
+        function togglexpand() {   
+            fullexpand = fullexpandcombo.checked  
+            draw()
+
+        }
+        output.value = slider.value;
+        colors = {
+            0: "ffffff",
+            1: "#00ff00",
+            2: "#ffff00",
+            3: "#ff0000",
+            4: "#8B0000",
+            "0t": "000000",
+            "1t": "#000000",
+            "2t": "#000000",
+            "3t": "#000000",
+            "4t": "#ffffff",
+        }
+        Route = null
+        onlynode = null
+        rects = []
+        var BreakException = {};
+        var currentnodeconditions = []
+        var currentsus = []
+
+        conditonselect.onchange = function (chosen) {
+            updateConditionTable(currentnodeconditions[conditonselect.selectedIndex], currentsus[conditonselect.selectedIndex])
+
+        };
+        compoundselect.onchange = function (chosen) {
+            updateCompound(onlynode.mols[compoundselect.selectedIndex][0], onlynode.mols[compoundselect.selectedIndex][2])
+
+        };
+
+
+        output.oninput = function () {
+            slider.value = this.value
+            draw()
+
+        }
+
+        var bestnodepicker = document.getElementById("bestnodepicker");
+        bestnodepicker.oninput = function () {
+            BESTNODECOLOR = this.value
+            draw()
+
+        }
+
+        var solvedroutenodepicker = document.getElementById("solvedroutenodepicker");
+        solvedroutenodepicker.oninput = function () {
+            SOLVEDROUTENODECOLOR = this.value
+            draw()
+
+        }
+
+        var solvednodepicker = document.getElementById("solvednodepicker");
+        solvednodepicker.oninput = function () {
+            SOLVEDNODECOLOR = this.value
+            draw()
+
+        }
+
+        var unsolvednodepicker = document.getElementById("unsolvednodepicker");
+        unsolvednodepicker.oninput = function () {
+            UNSOLVEDNODECOLOR = this.value
+            draw()
+
+        }
+
+        var selectedpicker = document.getElementById("selectedpicker");
+        selectedpicker.oninput = function () {
+            SELECTEDNODECOLOR = this.value
+            draw()
+
+        }
+
+
+
+        slider.oninput = function () {
+            output.value = this.value;
+
+            draw()
+        }
+        const hiddencanvas = document.getElementById("hcanvas");
+        const hiddencontext = hiddencanvas.getContext("2d");
+
+        const canvas = document.getElementById("myCanvas");
+        const context = canvas.getContext("2d");
+
+        function clear() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+
+        //updateConditionTable()
+        function updateConditionTable(conditionnode, sus) {
+
+
+
+            document.getElementById("Likehood").innerHTML = sus["score"];
+            document.getElementById("temperature").innerHTML = conditionnode["temperature"]["temperature"];
+            document.getElementById("solvent").innerHTML = conditionnode["solvent"]["solvent"].join(",");
+            document.getElementById("reagents").innerHTML = sus["reagents_names"];
+            document.getElementById("catalyst").innerHTML = conditionnode["catalyst"]["catalyst"];
+            document.getElementById("element_sustainability").innerHTML = conditionnode["element_sustainability"]["years"];
+            document.getElementById("atom_economy").innerHTML = conditionnode["atom_economy"]["atom_economy"];
+            document.getElementById("safety").innerHTML = conditionnode["safety"]["hazard_code_list"].join(",");
+
+
+            // document.getElementById("Likehood").style.backgroundColor = "Hello World";
+            document.getElementById("temperature").style.backgroundColor = colors[conditionnode["temperature"]["flag"]];
+            document.getElementById("solvent").style.backgroundColor = colors[conditionnode["solvent"]["flag"]];
+            // document.getElementById("reagents").style.backgroundColor = "None";
+            document.getElementById("catalyst").style.backgroundColor = colors[conditionnode["catalyst"]["flag"]];
+            document.getElementById("element_sustainability").style.backgroundColor = colors[conditionnode["element_sustainability"]["flag"]];
+            document.getElementById("atom_economy").style.backgroundColor = colors[conditionnode["atom_economy"]["flag"]];
+            document.getElementById("safety").style.backgroundColor = colors[conditionnode["safety"]["flag"]];
+
+        }
+
+
+        function updateCompound(smile, compund) {
+            if (compund.length > 0) {
+
+                document.getElementById("CompoundName").innerHTML = compund[0];
+                document.getElementById("CompoundMolecularWeight").innerHTML = compund[1];
+                document.getElementById("CompoundCAS").innerHTML = compund[2];
+                document.getElementById("CompoundHazardCodes").innerHTML = compund[3];
+                document.getElementById("CompoundTable").style.visibility = "visible";
+                document.getElementById("compoundsg").style.visibility = "hidden";
+
+            }
+            else {
+
+                document.getElementById("CompoundTable").style.visibility = "hidden";
+                document.getElementById("compoundsg").style.visibility = "visible";
+                document.getElementById("compoundsg").innerHTML = "Compound with SMILES " + smile + " is not in the database";
+            }
+
+            var mol = RDKitModule.get_mol(smile);
+            var mdetails = {};
+            mdetails['width'] = compoundcanvas.width
+            mdetails['height'] = compoundcanvas.width
+
+            mol.draw_to_canvas_with_highlights(compoundcanvas, JSON.stringify(mdetails));
+
+        }
+
+        function updateStepAnalysisTable(Route) {
+            steps = []
+            current = Route
+
+            while (current.children.length != 0) {
+                steps.push(current.children[0].conditions)
+                current = current.children[0]
+
+            }
+            steps = steps.reverse()
+            var index = 1
+            document.getElementById("solventrow").innerHTML = "<td>Solvent</td>"
+            document.getElementById("temperaturerow").innerHTML = "<td>Temperature</td>"
+            document.getElementById("catalystrow").innerHTML = "<td>Catalyst</td>"
+            document.getElementById("element_sustainabilityrow").innerHTML = "<td>Element Sustainability</td>"
+            document.getElementById("atom_economyrow").innerHTML = "<td>Atom Economy</td>"
+            document.getElementById("safetyrow").innerHTML = "<td>Safety</td>"
+            document.getElementById("Weighted_medianrow").innerHTML = "<td>Weighted Median</td>"
+
+            document.getElementById("stepAnalysisTablehead").innerHTML = "<th>Step Analysis</th>"
+
+            steps.forEach(element => {
+                var know = true
+                if (element.length == 0) {
+                    know = false
+                }
+                document.getElementById("stepAnalysisTablehead").insertCell(-1).innerHTML = index
+
+                solvent = document.getElementById("solventrow").insertCell(-1)
+                solvent.setAttribute("style", "background-color: " + ((know == true) ? colors[element[0].solvent.flag] : colors[0]) + " ;");
+
+                Temperature = document.getElementById("temperaturerow").insertCell(-1)
+                Temperature.setAttribute("style", "background-color: " + ((know == true) ? colors[element[0].temperature.flag] : colors[0]) + " ;");
+
+                Catalyst = document.getElementById("catalystrow").insertCell(-1)
+                Catalyst.setAttribute("style", "background-color: " + ((know == true) ? colors[element[0].catalyst.flag] : colors[0]) + " ;");
+
+                ElementSus = document.getElementById("element_sustainabilityrow").insertCell(-1)
+                ElementSus.setAttribute("style", "background-color: " + ((know == true) ? colors[element[0].element_sustainability.flag] : colors[0]) + " ;");
+
+                Atom = document.getElementById("atom_economyrow").insertCell(-1)
+                Atom.setAttribute("style", "background-color: " + ((know == true) ? colors[element[0].atom_economy.flag] : colors[0]) + " ;");
+
+                Safety = document.getElementById("safetyrow").insertCell(-1)
+                Safety.setAttribute("style", "background-color: " + ((know == true) ? colors[element[0].safety.flag] : colors[0]) + " ;");
+                Weighted = document.getElementById("Weighted_medianrow").insertCell(-1)
+                Weighted.setAttribute("style", "background-color: " + ((know == true) ? colors[Math.ceil(element[0].unweighted_median.flag)] : colors[0]) + " ;");
+
+                index++
+            });
+
+        }
+
+        let cameraOffset = { x: 0, y: 0 }
+        let boundingBox = { x: 0, y: 0, w: 100, h: 100 }
+
+        let cameraZoom = 0.1
+        let MAX_ZOOM = 1.8
+        let MIN_ZOOM = 0.001
+        let SCROLL_SENSITIVITY = 0.00005
+
+
+        // Gets the relevant location from a mouse or single touch event
+        function getEventLocation(e) {
+            if (e.touches && e.touches.length == 1) {
+                return { x: e.touches[0].clientX, y: e.touches[0].clientY }
+            }
+            else if (e.clientX && e.clientY) {
+                return { x: e.clientX, y: e.clientY }
+            }
+        }
+
+
+
+        let isDragging = false
+        let dragStart = { x: 0, y: 0 }
+
+        function onPointerDown(e) {
+            isDragging = true
+            dragStart.x = getEventLocation(e).x / cameraZoom - cameraOffset.x
+            dragStart.y = getEventLocation(e).y / cameraZoom - cameraOffset.y
+            //draw()
+
+        }
+
+        function onPointerUp(e) {
+            isDragging = false
+            initialPinchDistance = null
+            lastZoom = cameraZoom
+            //  draw()
+
+        }
+
+        function onPointerMove(e) {
+            if (isDragging) {
+                cameraOffset.x = getEventLocation(e).x / cameraZoom - dragStart.x
+                cameraOffset.y = getEventLocation(e).y / cameraZoom - dragStart.y
+                draw()
+            }
+            // draw()
+
+        }
+
+        function handleTouch(e, singleTouchHandler) {
+            if (e.touches.length == 1) {
+                singleTouchHandler(e)
+            }
+            else if (e.type == "touchmove" && e.touches.length == 2) {
+                isDragging = false
+                handlePinch(e)
+            }
+            // draw()
+
+        }
+
+        let initialPinchDistance = null
+        let lastZoom = cameraZoom
+        let canDoubleClick = true
+        function handlePinch(e) {
+            e.preventDefault()
+
+            let touch1 = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+            let touch2 = { x: e.touches[1].clientX, y: e.touches[1].clientY }
+
+            // This is distance squared, but no need for an expensive sqrt as it's only used in ratio
+            let currentDistance = (touch1.x - touch2.x) ** 2 + (touch1.y - touch2.y) ** 2
+
+            if (initialPinchDistance == null) {
+                initialPinchDistance = currentDistance
+            }
+            else {
+                adjustZoom(null, currentDistance / initialPinchDistance)
+            }
+            draw()
+
+        }
+
+        function adjustZoom(zoomAmount, zoomFactor) {
+            if (!isDragging) {
+                if (zoomAmount) {
+                    cameraZoom += zoomAmount
+                }
+                else if (zoomFactor) {
+                    cameraZoom = zoomFactor * lastZoom
+
+                }
+
+                cameraZoom = Math.min(cameraZoom, MAX_ZOOM)
+                cameraZoom = Math.max(cameraZoom, MIN_ZOOM)
+
+            }
+            draw()
+        }
+
+
+        canvas.addEventListener('mousedown', onPointerDown)
+        canvas.addEventListener('touchstart', (e) => handleTouch(e, onPointerDown))
+        canvas.addEventListener('mouseup', onPointerUp)
+        canvas.addEventListener('touchend', (e) => handleTouch(e, onPointerUp))
+        canvas.addEventListener('mousemove', onPointerMove)
+        canvas.addEventListener('touchmove', (e) => handleTouch(e, onPointerMove))
+        canvas.addEventListener('wheel', (e) => adjustZoom(-e.deltaY * SCROLL_SENSITIVITY))
+        canvas.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            if (!Route && !fullexpand){
+                let rect = e.target.getBoundingClientRect();
+                let mx = (e.clientX - rect.left)
+                let my = (e.clientY - rect.top)
+                // mx=getEventLocation(e).clientX 
+                // my=getEventLocation(e).y 
+
+
+
+                let nodeSelected = false
+                rects.forEach(noderect => {
+                    xy = getXY(noderect[0][0], noderect[0][1])
+                    nx = xy["x"]
+                    ny = xy["y"]
+
+                    nw = noderect[0][2] * cameraZoom
+                    nh = noderect[0][3] * cameraZoom
+                    if (mx > nx && mx < nx + nw && my > ny && my < ny + nh) {
+                        noderect[1].expanded=!noderect[1].expanded
+                    }});
+                    draw()
+            }
+            return false;
+        }, false);
+        canvas.addEventListener('dblclick', function (e) {
+            if (canDoubleClick) {
+                let rect = e.target.getBoundingClientRect();
+                let mx = (e.clientX - rect.left)
+                let my = (e.clientY - rect.top)
+                // mx=getEventLocation(e).clientX 
+                // my=getEventLocation(e).y 
+
+
+
+                let nodeSelected = false
+                rects.forEach(noderect => {
+                    xy = getXY(noderect[0][0], noderect[0][1])
+                    nx = xy["x"]
+                    ny = xy["y"]
+
+                    nw = noderect[0][2] * cameraZoom
+                    nh = noderect[0][3] * cameraZoom
+                    if (mx > nx && mx < nx + nw && my > ny && my < ny + nh) {
+                        nodeSelected = true
+
+                        onlynode = noderect[1]
+                        if (!onlynode.hasOwnProperty("conditions")) {
+                            if (Route) {
+
+                            }
+                            else {
+                                Route = getnodeRoute(ROOT_NODE, onlynode)
+
+
+                                cameraOffset_copy = Object.assign({}, cameraOffset);
+                                cameraOffset = { x: 0, y: -100 }
+                                cameraZoom_old = cameraZoom
+
+
+                            }
+                            canDoubleClick = false
+                            getConditionandSustainibilty()
+                        }
+                        else {
+                            showsus()
+
+                        }
+
+
+
+
+
+
+
+
+                    }
+
+
+                });
+
+                if (nodeSelected) {
+
+                }
+                else {
+                    cameraOffset = cameraOffset_copy
+                    cameraZoom = cameraZoom_old
+                    Route = null
+                    onlynode = null
+                }
+                draw()
+            }
+
+        });
+        addEventListener("resize", (event) => {
+
+            draw()
+        });
+
+        function showsus() {
+            if (onlynode.conditions.length > 0) {
+                updateConditionTable(onlynode.conditions[0], onlynode.sus[0])
+                currentnodeconditions = onlynode.conditions
+                currentsus = onlynode.sus
+                for (var option of document.querySelectorAll('#conditionselect option')) {
+                    option.remove();
+                }
+                for (var i = 0; i <= currentnodeconditions.length - 1; i++) {
+                    var opt = document.createElement('option');
+                    opt.value = i;
+                    opt.innerHTML = "Condition " + (i + 1);
+                    conditonselect.appendChild(opt);
+                }
+                conditonselect.selectedIndex = 0
+
+
+
+            }
+            else {
+                updateConditionTable(blankcondition, blanksus)
+                currentnodeconditions = []
+                currentsus = []
+
+                for (var option of document.querySelectorAll('#conditionselect option')) {
+                    option.remove();
+                }
+
+            }
+            for (var option of document.querySelectorAll('#compoundselect option')) {
+                option.remove();
+            }
+            for (var i = 0; i <= onlynode.mols.length - 1; i++) {
+                var opt = document.createElement('option');
+                opt.value = i;
+                opt.innerHTML = onlynode.mols[i][0];
+                compoundselect.appendChild(opt);
+            }
+            compoundselect.selectedIndex = 0
+            updateCompound(onlynode.mols[compoundselect.selectedIndex][0], onlynode.mols[compoundselect.selectedIndex][2])
+
+            if (Route) {
+                updateStepAnalysisTable(Route)
+
+            }
+            else {
+                Route = getnodeRoute(ROOT_NODE, onlynode)
+                updateStepAnalysisTable(Route)
+
+                cameraOffset_copy = Object.assign({}, cameraOffset);
+                cameraOffset = { x: 0, y: -100 }
+                cameraZoom_old = cameraZoom
+
+
+            }
+            document.getElementById('conditiondiv').style.visibility = "visible";
+            document.getElementById('compundDiv').style.visibility = "visible";
+            
+
+
+
+
+        }
+        async function getConditionandSustainibilty() {
+            routelist = getnodeRouteList(ROOT_NODE, onlynode)
+            for (let i = 0; i < routelist.length; i++) {
+
+                current = routelist[i]
+                const settings = {
+                    method: 'GET',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    }
+
+                };
+                if (!current.hasOwnProperty("conditions")) {
+                    if (current.reaction_smiles) {
+                        const sendRequest = await fetch("/get_condition_sustainibility?reaction_smiles=" + current.reaction_smiles, settings)
+                        const res = await sendRequest.json()
+                        current.conditions = res.conditions
+                        current.sus = res.sus
+
+
+                    }
+                    else {
+                        current.conditions = []
+                        current.sus = []
+
+                    }
+                    for (let si = 0; si < current.mols.length; si++) {
+                        const compoundrequest = await fetch("/get_compound?smiles=" + current.mols[si][0], settings)
+                        const compund = await compoundrequest.json()
+                        current.mols[si].push(compund["Compound"])
+                    }
+
+                }
+                console.log(ROOT_NODE)
+
+
+            }
+            Route = getnodeRoute(ROOT_NODE, onlynode)
+
+            showsus()
+            draw()
+            canDoubleClick = true
+
+
+        }
+
+        function getnodeRoute(node, routenode) {
+            if (JSON.stringify(node) === JSON.stringify(routenode)) {
+                newnode = Object.assign({}, node);
+                newnode.children = []
+                return newnode
+            }
+            found = null
+            try {
+                node.children.forEach(function (childnode) {
+                    var dd = getnodeRoute(childnode, routenode)
+                    if (dd) {
+                        ddd = 1
+                        newnode11 = Object.assign({}, node);
+                        newnode11.children = [dd]
+                        found = newnode11
+                        throw BreakException
+                    }
+
+
+
+                })
+            } catch (e) {
+                if (e !== BreakException) throw e;
+            }
+            return found
+        }
+
+        function getnodeRouteList(node, routenode) {
+            let routelist = []
+
+            if (JSON.stringify(node) === JSON.stringify(routenode)) {
+                routelist.push(node)
+                return routelist
+            }
+
+            for (var i = 0; i < node.children.length; i++) {
+                let dd = getnodeRouteList(node.children[i], routenode)
+                if (dd.length > 0) {
+                    routelist.push(node)
+                    routelist = routelist.concat(dd)
+
+                    return routelist
+
+                }
+
+
+
+
+            }
+
+
+            return []
+
+        }
+
+        function fragmentText(text, maxWidth) {
+            var words = text.split(' '),
+                lines = [],
+                line = "";
+
+            
+            if (context.measureText(text).width < maxWidth) {
+                return [text];
+            }
+            while (words.length > 0) {
+                var split = false;
+                while (context.measureText(words[0]).width >= maxWidth) {
+                    var tmp = words[0];
+                    words[0] = tmp.slice(0, -1);
+                    if (!split) {
+                        split = true;
+                        words.splice(1, 0, tmp.slice(-1));
+                    } else {
+                        words[1] = tmp.slice(-1) + words[1];
+                    }
+                }
+                if (context.measureText(line + words[0]).width < maxWidth) {
+                    line += words.shift() + " ";
+                } else {
+                    lines.push(line);
+                    line = "";
+                }
+                if (words.length === 0) {
+                    lines.push(line);
+                }
+            }
+            return lines;
+        }
+
+        NODE_WIDTH = 500
+        NODE_HEIGHT = 600
+        X_OFFSET = 100
+        Y_OFFSET = 100
+        FONT_SIZE = 20
+
+        var IMAGES = {}
+
+        X = 0
+        Y = 0
+        ROOT_NODE = JSON.parse({{ data | tojson | safe }})
+        let TOTALITERATION = ROOT_NODE.totaliterations
+        slider.max = TOTALITERATION
+        slider.value = TOTALITERATION
+        console.log(ROOT_NODE)
+        let RDKitModule = 0
+        initRDKitModule().then(function (instance) {
+            RDKitModule = instance;
+
+        });
+
+        function getXY(mouseX, mouseY) {
+            newX = mouseX * matrix[0] + mouseY * matrix[2] + matrix[4];
+            newY = mouseX * matrix[1] + mouseY * matrix[3] + matrix[5];
+            return ({ x: newX, y: newY });
+        }
+
+        function draw_node(node, x, y, is_solved, isbest, iteraton, istarget) {
+            if (!node.hasOwnProperty("expanded")){
+                node.expanded=false
+            }
+            if (!node.hasOwnProperty("hash")){
+                node.hash=HASH
+                HASH+=1
+            }
+            if (x > boundingBox.x + boundingBox.w || x < (boundingBox.x - NODE_WIDTH)) {
+                return
+            }
+            if (node.iteration > iteraton) {
+                return
+            }
+
+            thickness = "3"
+            color = UNSOLVEDNODECOLOR
+            if (is_solved) {
+                color = SOLVEDROUTENODECOLOR
+                thickness = "5"
+
+            }
+            else {
+                solvved = true
+                node.mols
+                node.mols.forEach(smile => {
+                    if (smile[1].toLowerCase() == "Not in Stock".toLowerCase()) {
+                        solvved = false
+                    }
+
+                });
+                if (solvved) {
+                    color = SOLVEDNODECOLOR
+                    thickness = "5"
+                }
+            }
+            if (isbest) {
+                color = BESTNODECOLOR
+                thickness = "5"
+
+            }
+            if (Route){
+                
+                if (node.hash===onlynode.hash) {
+                    thickness = "8"
+                    color = SELECTEDNODECOLOR
+
+                }
+            }
+           
+
+
+            context.beginPath();
+            rects.push([[x, y, NODE_WIDTH, NODE_HEIGHT], node])
+
+            context.lineWidth = thickness;
+            context.strokeStyle = color
+
+            // if (isbest)
+            // if (node.conditions.length>0){
+            //     context.fillStyle=colors[node.conditions[0].element_sustainability.flag]
+
+
+            //     context.fillRect(x, y, NODE_WIDTH, 100);
+            //     context.stroke();
+            // }
+            context.rect(x, y, NODE_WIDTH, NODE_HEIGHT);
+            context.stroke();
+
+            // context.fillStyle="white"
+
+            // context.fillRect(x, y, NODE_WIDTH, NODE_HEIGHT);
+            // context.stroke();
+
+
+
+            // context.fillRect(x, y+100, NODE_WIDTH, NODE_HEIGHT-100);
+            // context.stroke();
+
+            // context.rect(x, y, NODE_WIDTH, NODE_HEIGHT);
+            // context.stroke();
+
+            context.rect(x, y + 100, NODE_WIDTH, NODE_HEIGHT - 100);
+            context.stroke();
+
+            context.strokeStyle = "#000000"
+
+            if (istarget) {
+                context.font = "48px serif";
+
+                context.fillStyle = "black";
+                context.textAlign = "center"
+                context.fillText("Target Chemical", x + Math.round(NODE_WIDTH / 2), y + 70);
+            }
+            else {
+                context.font = "48px serif";
+
+                if (node["reaction"].length > 25) {
+                    
+
+                    linecounter = 0
+                    fragmentText(node["reaction"], NODE_WIDTH).forEach(line => {
+                        context.font = "48px serif";
+                        context.fillStyle = "black";
+                        context.textAlign = "center"
+                        context.fillText(line, x + Math.round(NODE_WIDTH / 2), y + 40 + (linecounter * 50));
+                        linecounter++
+                    });
+                }
+                else {
+                    context.font = "48px serif";
+
+                    context.fillStyle = "black";
+                    context.textAlign = "center"
+                    context.fillText(node["reaction"], x + Math.round(NODE_WIDTH / 2), y + 70);
+                }
+            }
+
+
+            if (node.mols.length > 0) {
+                if (cameraZoom > 0.17) {
+                    nr = Math.ceil(Math.sqrt(node.mols.length))
+                    w = Math.round((NODE_WIDTH - 10) / nr)
+                    let options = { "width": w, "height": w };
+
+                    //let smilesDrawer = new SmilesDrawer.Drawer(options);
+                    let row = 0
+                    let col = 0
+                    node.mols.forEach(smiles => {
+
+
+
+                        //var smiles = "CC(=O)Oc1ccccc1C(=O)O";
+
+                        let name = smiles[0].concat("---", Math.round(w).toString())
+
+                        if (name in IMAGES) {
+
+                            //context.putImageData(IMAGES[name], newpos.x, newpos.y);
+                            hiddencanvas.style.display = "block"
+                            hiddencanvas.width = w
+                            hiddencanvas.height = w
+
+                            // hiddencontext.scale(matrix[0],matrix[0])
+                            hiddencontext.clearRect(0, 0, w, w)
+                            hiddencontext.putImageData(IMAGES[name], 0, 0);
+                            // hiddencontext.scale(0.01,0.03)
+                            context.drawImage(hiddencanvas, x + (col * w) + 3, y + (row * w) + 3 + 100);
+                            hiddencanvas.style.display = "none"
+
+
+                        }
+                        else {
+
+                            var mol = RDKitModule.get_mol(smiles[0]);
+                            var mdetails = {};
+                            mdetails['width'] = w
+                            mdetails['height'] = w
+                            mdetails['legend'] = smiles[1]
+                            hiddencanvas.style.display = "block"
+                            hiddencanvas.width = w
+                            hiddencanvas.height = w
+
+                            mol.draw_to_canvas_with_highlights(hiddencanvas, JSON.stringify(mdetails));
+                            hiddencanvas.style.display = "none"
+
+
+
+                            hiddencanvas.style.display = "block"
+                            //const imgData = hiddencontext.createImageData(w, w);
+                            IMAGES[name] = hiddencontext.getImageData(0, 0, w, w)
+                            context.drawImage(hiddencanvas, x + (col * w) + 2, y + (row * w) + 2 + 100);
+                            hiddencanvas.style.display = "none"
+                        }
+                        col++
+                        if (nr <= col) {
+                            row++
+                            col = 0
+                        }
+                    });
+                }
+
+
+            }
+        }
+
+        function calculate_width(node, iteration) {
+            W = 0
+            if (node.iteration > iteration) {
+                return 0
+            }
+            if (node.children.length > 0  && (node.expanded||fullexpand)) {
+
+                node.children.forEach(child => {
+                    W += calculate_width(child, iteration)
+
+                });
+                if (W == 0) {
+                    return NODE_WIDTH + X_OFFSET
+                }
+
+                return W
+            }
+            else {
+                return NODE_WIDTH + X_OFFSET
+            }
+
+        }
+        function range(start, end, step = 1) {
+            const result = [];
+            for (let i = start; i <= end; i += step) {
+                result.push(i);
+            }
+            return result;
+        }
+
+
+        function draw_node_children(node, x, y, best, iteration) {
+
+            y += NODE_HEIGHT + Y_OFFSET
+            let drawables = []
+            let iii = 0
+            node.children.forEach(child => {
+                if (child.iteration <= iteration) {
+                    drawables = drawables.concat(iii)
+
+                }
+                iii++
+            })
+            // if (node.is_solved){
+            // }
+            let is_solved = node.is_solved
+
+            let is_best = node.is_best
+            if (node.children && node.iteration <= iteration && (node.expanded||fullexpand)) {
+                let i = 0
+                node.children.forEach(child => {
+                    if (child.iteration > iteration) {
+                        i++
+                        return
+                    }
+                    let w = calculate_width(child, iteration)
+
+
+
+                    let sol = false
+                    let result = draw_node_children(child, x, y, best, iteration)
+                    sol = result[0]
+                    isb = result[1]
+                    if (sol) {
+
+                        is_solved = sol
+                    }
+                    if (isb) {
+                        is_best = isb
+                    }
+                    draw_node(child, x + w / 2, y, sol, isb, iteration, false)
+                    if (i != drawables[0]) {
+                        context.beginPath();
+                        context.lineWidth = "3";
+
+                        context.moveTo(x + w / 2 + NODE_WIDTH / 2, y - Y_OFFSET / 2);
+                        context.lineTo(x + NODE_WIDTH / 2, y - Y_OFFSET / 2);
+                        context.stroke();
+
+                    }
+                    if (i != drawables[drawables.length - 1]) {
+                        context.beginPath();
+                        context.lineWidth = "3";
+
+                        context.moveTo(x + w / 2 + NODE_WIDTH / 2, y - Y_OFFSET / 2);
+                        context.lineTo(x + w + NODE_WIDTH / 2, y - Y_OFFSET / 2);
+                        context.stroke();
+
+                    }
+                    if (child.children.length > 0) {
+                        context.beginPath();
+                        context.lineWidth = "3";
+
+                        context.moveTo(x + w / 2 + NODE_WIDTH / 2, y + NODE_HEIGHT);
+                        context.lineTo(x + w / 2 + NODE_WIDTH / 2, y + NODE_HEIGHT + Y_OFFSET / 2);
+                        context.stroke();
+
+                    }
+                    context.beginPath();
+                    context.lineWidth = "3";
+
+                    context.moveTo(x + w / 2 + NODE_WIDTH / 2, y);
+                    context.lineTo(x + w / 2 + NODE_WIDTH / 2, y - Y_OFFSET / 2);
+                    context.stroke();
+
+                    x += w
+                    i++
+                });
+
+
+            }
+
+            return [is_solved, is_best]
+
+        }
+
+        function draw_tree(root, best, iteration) {
+            let w = calculate_width(root, iteration)
+            w += NODE_WIDTH
+
+
+
+
+            asd = draw_node_children(root, X, Y, best, iteration)
+            is_solved = asd[0]
+            is_best = asd[1]
+
+            context.beginPath();
+            context.lineWidth = "3";
+
+            context.moveTo(X + w / 2, Y + NODE_HEIGHT);
+            context.lineTo(X + w / 2, Y + NODE_HEIGHT + Y_OFFSET / 2);
+            context.stroke();
+
+            draw_node(root, X + w / 2 - NODE_WIDTH / 2, Y, is_solved, is_best, iteration, true)
+
+        }
+
+        function drawRect(x, y, width, height) {
+            context.fillRect(x, y, width, height)
+        }
+        var matrix = [1, 0, 0, 1, 0, 0];
+        function draw() {
+
+            rects = []
+
+            matrix = [1, 0, 0, 1, 0, 0];
+
+            canvas.width = window.innerWidth - 50
+            canvas.height = window.innerHeight - 100
+            context.translate(window.innerWidth / 2, window.innerHeight / 2)
+            //matrix[4] += matrix[0] * x + matrix[2] * y;
+            //matrix[5] += matrix[1] * x + matrix[3] * y;
+            matrix[4] += matrix[0] * (window.innerWidth / 2) + matrix[2] * (window.innerHeight / 2);
+            matrix[5] += matrix[1] * (window.innerWidth / 2) + matrix[3] * (window.innerHeight / 2);
+
+            context.scale(cameraZoom, cameraZoom)
+            matrix[0] *= cameraZoom;
+            matrix[1] *= cameraZoom;
+            matrix[2] *= cameraZoom;
+            matrix[3] *= cameraZoom;
+
+            context.translate(-window.innerWidth / 2 + cameraOffset.x, -window.innerHeight / 2 + cameraOffset.y)
+            matrix[4] += matrix[0] * (-window.innerWidth / 2 + cameraOffset.x) + matrix[2] * (-window.innerHeight / 2 + cameraOffset.y);
+            matrix[5] += matrix[1] * (-window.innerWidth / 2 + cameraOffset.x) + matrix[3] * (-window.innerHeight / 2 + cameraOffset.y);
+
+            context.clearRect(0, 0, window.innerWidth, window.innerHeight)
+
+
+
+
+
+
+            let xx = -cameraOffset.x + cameraZoom
+
+
+            boundingBox = { "x": -matrix[4] / matrix[0], "y": -matrix[5] / matrix[0], "w": window.innerWidth / matrix[0], "h": window.innerHeight / matrix[0] }
+            if (Route) {
+                draw_tree(Route, 1, slider.value)
+
+            }
+            else {
+                draw_tree(ROOT_NODE, 1, slider.value)
+                document.getElementById('conditiondiv').style.visibility = "hidden";
+                document.getElementById('compundDiv').style.visibility = "hidden";
+                document.getElementById('compoundsg').style.visibility = "hidden";
+                document.getElementById('CompoundTable').style.visibility = "hidden";
+
+
+
+            }
+
+
+        }
+
+        draw()
+
+        document.addEventListener("DOMContentLoaded", function () {
+            slider.value = TOTALITERATION
+            output.value = TOTALITERATION
+        });
+    </script>
+
+
+
+</body>
+
+
+
+{% endblock %}

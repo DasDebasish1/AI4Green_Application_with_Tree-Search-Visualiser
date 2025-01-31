@@ -1,0 +1,24 @@
+Content-Type: multipart/mixed; boundary="===============3314259482288749391=="
+MIME-Version: 1.0
+To: admin@mail.com
+From: admin@ai4green.app
+Subject: You have a new AI4Green notification
+
+--===============3314259482288749391==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+Dear admin,
+
+You have a new AI4Green notification. To view this notification <a href="http://127.0.0.1:5000/notifications">click here.</a>
+
+Alternatively, you can paste the following link in your browser's address bar:
+
+http://127.0.0.1:5000/notifications
+
+You are receiving this message because you are signed up to AI4Green with this email address.
+
+Sincerely,
+The AI4Green Team
+--===============3314259482288749391==--

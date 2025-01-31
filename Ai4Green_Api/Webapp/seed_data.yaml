@@ -1,0 +1,44 @@
+# Seed data for the development and dissemination of the ai4green application
+# Controls: Predefined users, workgroups, and workbooks.
+---
+predefined_users:
+  admin_user:
+    username: "admin"
+    password: "admin_login" # change this password
+    email: "admin@mail.com"
+    fullname: "Predefined Administrator"
+    admin: True
+
+  user1:
+    username: "User 1"
+    password: "password"
+    email: "user@mail.com"
+    fullname: "User 1"
+    admin: False
+
+    user2:
+      username: "User 2"
+      password: "password"
+      email: "user2@mail.com"
+      fullname: "User 2"
+      admin: False
+
+    user3:
+      username: "User 3"
+      password: "password"
+      email: "user3@mail.com"
+      fullname: "User 3"
+      admin: False
+
+
+predefined_workgroups:
+  workgroup1:
+    name: "Development Workgroup"
+    principal_investigators: "user@mail.com"
+    senior_researchers: "user1@mail.com"
+    standard_members: "user2@mail.com"
+    workbooks:
+      workbook1:
+        name: "Development-Workbook-1"
+        abbreviation: "DW1"
+        members: "user@mail.com;user2@mail.com;user3@mail.com"

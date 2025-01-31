@@ -1,0 +1,25 @@
+1. open cmd from the ai4green folder
+2. Run conda env create --file environment.yml
+3. Run conda activate ai4green
+4. Install Postgresql 14 version
+5. Create a new database in pgadmin named "ai4green"
+6. Right-click on the ai4green database and click restore option and select 'ai4greendb' file in the ai4green folder and click start to restore
+7. Run flask download-pubchem on cmd
+8. Run flask update-pubchem on cmd
+
+If you get an issue like 'main thread deleted' then do below:-
+
+1. In cmd run echo %CONDA_PREFIX% to get the location
+2. navigate to the output path by the above command
+3. then further navigate to \Lib\site-packages\pikachu\drawing\
+4. open drawing.py 
+
+add the below lines above the 'matplotlib' import and save
+"
+import matplotlib
+matplotlib.use('Agg')
+"
+
+5. then move to cd Webapp after conda activate ai4green
+6. then type flask run in cmd.
+7. Click the URL to direct to the website of AI4green
