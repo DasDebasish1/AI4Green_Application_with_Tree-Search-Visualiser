@@ -1,0 +1,1 @@
+If environment.yml results in the process being killed use environment2.yml and install remaining requirements from the text file.

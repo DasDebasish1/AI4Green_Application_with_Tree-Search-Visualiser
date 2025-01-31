@@ -1,0 +1,1 @@
+Follow all the "INSTRUCTION" in each folder Ai4Green, Condition_Api and Retrosynthesis_Api to setup

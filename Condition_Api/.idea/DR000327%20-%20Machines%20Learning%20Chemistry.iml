@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="Flask">
+    <option name="enabled" value="true" />
+  </component>
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/Compound_database" />
+    <content url="file://$MODULE_DIR$/Reactions_database" />
+    <content url="file://$MODULE_DIR$/Webapp">
+      <excludeFolder url="file://$MODULE_DIR$/Webapp/venv" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 3.8 (ai4green)" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="@types/jquery" level="application" />
+  </component>
+  <component name="PyDocumentationSettings">
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
+  </component>
+  <component name="PyNamespacePackagesService">
+    <option name="namespacePackageFolders">
+      <list>
+        <option value="$MODULE_DIR$/Webapp/sources/auth" />
+        <option value="$MODULE_DIR$/Webapp/sources/main" />
+        <option value="$MODULE_DIR$/Webapp/sources/reaction_table" />
+        <option value="$MODULE_DIR$/Webapp/sources/reagents" />
+        <option value="$MODULE_DIR$/Webapp/sources/solvents" />
+        <option value="$MODULE_DIR$/Webapp/sources/summary" />
+        <option value="$MODULE_DIR$/Webapp/sources" />
+      </list>
+    </option>
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/Webapp/sources/templates" />
+      </list>
+    </option>
+  </component>
+</module>

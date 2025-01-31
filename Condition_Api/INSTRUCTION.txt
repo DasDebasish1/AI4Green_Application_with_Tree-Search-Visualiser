@@ -1,0 +1,4 @@
+1. open cmd from the Condition_Api folder
+2. Run conda env create --file environment.yml
+3. Run conda activate askcos
+4. Run python app.py
