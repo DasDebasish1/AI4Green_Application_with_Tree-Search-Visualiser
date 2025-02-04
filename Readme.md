@@ -48,13 +48,44 @@ Users can return to the tree search main page by double-clicking on the empty ar
 
 On selecting a node, it shows three tables to view the details of the node, as seen in Figure 5, which are the following:
 
-1.	Condition and sustainability:
+1.	**Condition and sustainability:**
 In the "Condition Set" drop-down list, the user can choose (and compare up to 10 different) experimental conditions. Each condition set shows different parameters, including temperature, solvent, reagents, catalysts, and other factors.
 Details of the elements in the table: -
-	Likelihood Score: - This score indicates the probability or observed frequency of success for the reaction under the given conditions.
-	Temperature(C): - This is the temperature at which the reaction is carried out.
-	Solvents: - These are materials used to dissolve reactants. A solvent is typically a liquid substance which, when added to the reactants, the reactants, goes from being dry solids to forming solutions.
-	Reagents: Each reagent is a substance required for the chemical reaction.
-	Catalyst: It does not consume reagent participation but instead accelerates the rate of chemical reaction.
-	Element sustainability: - Refer to the element's availability.
-	Safety: - These are hazard statements according to the Globally Harmonized System. Reagents or solvents in the reaction pose various health and safety risks, such as flammability, eye and respiratory irritation, and potential carcinogenicity.
+-	Likelihood Score: - This score indicates the probability or observed frequency of success for the reaction under the given conditions.
+-	Temperature(C): - This is the temperature at which the reaction is carried out.
+-	Solvents: - These are materials used to dissolve reactants. A solvent is typically a liquid substance which, when added to the reactants, the reactants, goes from being dry solids to forming solutions.
+-	Reagents: Each reagent is a substance required for the chemical reaction.
+-	Catalyst: It does not consume reagent participation but instead accelerates the rate of chemical reaction.
+-	Element sustainability: - Refer to the element's availability.
+-	Safety: - These are hazard statements according to the Globally Harmonized System. Reagents or solvents in the reaction pose various health and safety risks, such as flammability, eye and respiratory irritation, and potential carcinogenicity.
+
+2.	**Sustainability Assessment:**
+The step analysis table evaluates several aspects of the reaction process. Each column represents a step in the reaction process, and each row represents different sustainability metrics, such as Solvent, Temperature, Catalyst, Element Sustainability, Atom Economy, and Safety.
+
+Below are the three colour codes with their significance: -
+-	Green: Indicates a high level of sustainability and safety.
+-	Yellow: Indicates a moderate level, with some concern
+-	Red indicates a low level and shows significant dangers. 
+
+The colour-coded cells provide a quick visual assessment of which aspects of each step are sustainable (green), acceptable (yellow), or problematic (red). By examining the colour patterns, users can identify specific steps that require attention. For example, Step 4 might be problematic regarding Element Sustainability and Atom Economy (red), while Step 2 has good sustainability across all metrics (primarily green). Users can also tailor the assessment by adjusting the weightings of the metrics. For instance, if safety is a priority, the user can increase the weight for the Safety metric, which will affect the overall assessment (Weighted Median).
+
+3.	**Compound Detail:**
+In the ‘compounds’ selection drop-down list, the user can select different compounds that are shown in the selected node and details of the compound will be shown on the compound table.
+Details of the table’s elements: -
+-	Name of the compound which provides information about its chemical composition and structure. For example, "sodium chloride" indicates a compound consisting of sodium (Na) and chlorine (Cl) atoms. In contrast, "ethanol" (C₂H₅OH) indicates a compound with two carbon atoms, six hydrogen atoms, and one hydroxyl group.
+-	Molecular weight: Molecular weight is the sum of the atomic weights of all atoms in a molecule, measured in atomic mass units (AMU). To calculate it, multiply the atomic weight of each element by the number of its atoms in the molecule, then sum these values. For example, the molecular weight of water (H₂O) is 18.02 amu (2*1.01 for H + 16.00 for O).
+-	CAS: A CAS (Chemical Abstracts Service) number is a unique numerical identifier assigned to every chemical substance. It is used to provide a unique, unmistakable identifier for chemical substances. A CAS number consists of up to 10 digits, divided into three parts by hyphens.
+-	Hazard codes: Hazard codes are standardised identifiers used in the Globally Harmonized System (GHS) to describe the hazards of chemical substances and mixtures. Each code starts with "H" followed by three digits, indicating specific types of hazards such as flammability, toxicity, or environmental danger. For example, H220 indicates a highly flammable gas.
+
+![Project Screenshot](https://github.com/DasDebasish1/AI4Green_Application_with_Tree-Search-Visualiser/blob/main/Picture6.png)
+<p align="center">Figure 6</p>
+
+The Tree search viewer will initially show the Target chemical node, but if the user right-clicks over the target chemical node, then it unfolds the next branch, as shown in Figure 6. The user can return to the previous state of the tree by right-clicking the parent node once again. 
+
+### Benefits of using Ai4green Tree Search Viewer
+
+-	Identifying Issues: Quickly highlights which steps in a reaction are less sustainable, guiding researchers to focus on improving those areas.
+-	Customisation: Allows researchers to prioritise certain sustainability aspects over others based on specific project requirements or institutional policies.
+-	Visualisation: The visual representation makes it easy to communicate sustainability assessments to team members, stakeholders, or regulatory bodies.
+
+**This tool is handy in green chemistry, where the goal is to ensure that chemical processes are effective, environmentally friendly, and safe.**
