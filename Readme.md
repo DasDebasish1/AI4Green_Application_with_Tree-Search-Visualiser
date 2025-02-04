@@ -15,6 +15,46 @@ The ai4green app has been implemented as part of this project with an advanced f
 Upon entering the AI4green Application, log in using your unique login credentials. Once you are logged in, select the Retrosynthesis tab. On the retrosynthesis page, the user needs to input the smile in the area as highlighted in green (Figure 1) and press the ‘new retrosynthesis’ button to process the smile. Additionally, the user can change the number of iterations highlighted in red below. By default, it is set to 100. Once the retrosynthesis button is clicked, the process begins. 
 
 ![Project Screenshot](https://github.com/DasDebasish1/AI4Green_Application_with_Tree-Search-Visualiser/blob/main/Picture1.png)
+<p align="center">Figure 1</p>
 
+Once the process is completed, the user can see the Tree button on the retrosynthesis page at the right-side corner, highlighted in red in Figure 2 When clicked, the Tree visualiser will open, allowing the user to view the tree search.
 
+![Project Screenshot](https://github.com/DasDebasish1/AI4Green_Application_with_Tree-Search-Visualiser/blob/main/Picture2.png)
+<p align="center">Figure 2</p>
 
+On the tree search viewer, at the edge of each node of the tree, the reaction name is added if found in the metadata of the database or else shown as unassigned. This reaction name allows the user to identify the chemical composition quickly. The reaction name of a particular node is shown in Figure 3, highlighted in sky blue. The reaction process name is followed by pictures of chemicals ‘in stock’ and ‘not in stock’ processed using RDKit.’
+
+![Project Screenshot](https://github.com/DasDebasish1/AI4Green_Application_with_Tree-Search-Visualiser/blob/main/Picture3.png)
+<p align="center">Figure 3</p>
+
+The retrosynthesis tree search viewer is integrated with zoom functionality to increase and decrease the canvas's zoom where the tree search is viewed. The user needs to first click on the canvas and then use the scroll of the mouse to zoom in and out of the canvas, and in case of touch, the user needs a finger touch on the canvas to zoom in and out. If the user doesn’t click on the canvas but scrolls the mouse, then the web page size will change instead of the canvas. 
+
+The retrosynthesis tree search viewer has a slider to change the iteration. This helps the user check how MCTS expands to reach the target chemical on each iteration, as highlighted in sky blue colour in Figure 4. 
+The user can also change the colour of the ‘Best solved node’, ‘Solved route node’, ’Solved Node’, ‘Unsolved Node’, and ‘Selected Node’ colour, respectively, as per requirement, using a colour picker as shown in Figure 4, highlighted in yellow.  
+
+![Project Screenshot](https://github.com/DasDebasish1/AI4Green_Application_with_Tree-Search-Visualiser/blob/main/Picture4.png)
+<p align="center">Figure 4</p>
+
+The user can click any node of the tree viewed on the canvas. If the user selects a node from the tree, then the route from the root node to the selected node, highlighting the selected node and hiding other nodes, will be shown to the viewer. The details of the selected node’s compounds will be displayed in the upper-left side corner of the canvas with details like the Name of the compound, Molecular weight, CAS Number, and Hazard Code, as shown in Figure 5, highlighted in green. 
+
+![Project Screenshot](https://github.com/DasDebasish1/AI4Green_Application_with_Tree-Search-Visualiser/blob/main/Picture5.png)
+<p align="center">Figure 5</p>
+
+On the right-side corner, the Condition set drop-down allows the user to pick 10 different experimental conditions. The details are in the top right corner of the Condition & Sustainability table in Figure 5. This table is followed by the step analysis table (highlighted in blue), which shows the steps of the selected route with flag colours. For instance, step 1 shows the flag colour of the last node as highlighted in red.
+
+Details on the compounds, step analysis, condition, and sustainability tables will depend on the data availability in the database. If not available, then ‘unknown’ will be shown. For the compounds table, it will show that ‘’Compound with SMILES ‘SMILE’ is not in the database’’, as shown in the figure highlighted in orange. For the step analysis, it will show the default colour, which is ‘white’.
+
+Users can return to the tree search main page by double-clicking on the empty area of the canvas. Additionally, it has touch capability, meaning the user can interact entirely with the Tree visualiser/viewer using a touchscreen. External hardware like a mouse or keyboard is not required.
+
+On selecting a node, it shows three tables to view the details of the node, as seen in Figure 5, which are the following:
+
+1.	Condition and sustainability:
+In the "Condition Set" drop-down list, the user can choose (and compare up to 10 different) experimental conditions. Each condition set shows different parameters, including temperature, solvent, reagents, catalysts, and other factors.
+Details of the elements in the table: -
+	Likelihood Score: - This score indicates the probability or observed frequency of success for the reaction under the given conditions.
+	Temperature(C): - This is the temperature at which the reaction is carried out.
+	Solvents: - These are materials used to dissolve reactants. A solvent is typically a liquid substance which, when added to the reactants, the reactants, goes from being dry solids to forming solutions.
+	Reagents: Each reagent is a substance required for the chemical reaction.
+	Catalyst: It does not consume reagent participation but instead accelerates the rate of chemical reaction.
+	Element sustainability: - Refer to the element's availability.
+	Safety: - These are hazard statements according to the Globally Harmonized System. Reagents or solvents in the reaction pose various health and safety risks, such as flammability, eye and respiratory irritation, and potential carcinogenicity.
